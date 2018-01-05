@@ -1,0 +1,17 @@
+[Unit]
+Description=%(PROJECT_NAME)s
+Before=nginx.service
+
+[Service]
+User=%(USER)s
+Group=%(GROUP)s
+PIDFile=/var/run/steepshotbot.pid
+ExecStart=%(DEPLOY_DIR)s/conf/gunicorn.sh
+StartLimitInterval=60
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

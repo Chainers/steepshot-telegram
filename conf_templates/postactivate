@@ -1,0 +1,10 @@
+#!/bin/bash
+# This hook is run after this virtualenv is activated.
+
+export DATABASE_URL=%(DATABASE_URL)s
+export IS_PRODUCTION=%(IS_PRODUCTION)s
+export IS_CERTBOT_CERT=%(IS_CERTBOT_CERT)s
+export STEEPSHOTBOT_DOMAIN=%(STEEPSHOTBOT_DOMAIN)s
+export FLASK_APP=%(FLASK_APP)s
+export PYTHONPATH=%(DEPLOY_DIR)s
+export TELEGRAM_BOT_TOKEN=%(TELEGRAM_BOT_TOKEN)s
